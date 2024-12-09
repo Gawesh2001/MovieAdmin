@@ -1,0 +1,68 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Container for all movie elements */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Each movie container */
+.movie-container {
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+.movie-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.movie-title {
+    font-size: 1.5em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.movie-category {
+    color: #555;
+    font-size: 1.2em;
+}
+
+.movie-description {
+    color: #666;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.movie-release-date, .movie-showing-time {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* Clear every 4th movie to start a new row */
+.clear {
+    clear: both;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .movie-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
