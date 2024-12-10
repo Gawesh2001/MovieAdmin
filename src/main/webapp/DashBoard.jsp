@@ -24,7 +24,7 @@
             <li><a href="reports.html">Reports</a></li>
             <li><a href="payments.html">Payments</a></li>
             <li><a href="javascript:void(0);" id="manageMoviesLink" onclick="toggleManageMovies()">Manage Movies</a></li>
-            <li><a href="users.html">Cancel Tickets</a></li>
+            <li><a href="CancelTickets.jsp">Cancel Tickets</a></li>
             <li><a href="settings.html">Settings</a></li>
             <li><a href="LoginPage.jsp" id="logout" onclick="confirmLogout()">Logout</a></li>
           
