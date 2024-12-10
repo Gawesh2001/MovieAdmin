@@ -34,7 +34,14 @@
     
     
    
-    
+    <servlet>
+        <servlet-name>MovieServlet</servlet-name>
+        <servlet-class>MovieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MovieServlet</servlet-name>
+        <url-pattern>/movies</url-pattern>
+    </servlet-mapping>
     
     
     <session-config>

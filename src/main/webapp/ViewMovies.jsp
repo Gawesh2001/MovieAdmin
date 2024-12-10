@@ -10,7 +10,8 @@
 
     <div class="movies-container">
         <!-- Dynamic movie containers will be inserted here by the servlet -->
-         <iframe src="viewmovies" style="border:none; width:100%; height:100vh;"></iframe>
+        
     </div>
+     <iframe src="viewmovies" style="border:none; width:100%; height:100vh;"></iframe>
 </body>
 </html>

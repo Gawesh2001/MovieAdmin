@@ -1,4 +1,3 @@
-// JavaScript code to handle ticket booking actions
 document.querySelectorAll('.book-button').forEach(button => {
     button.addEventListener('click', function() {
         alert('Ticket booked successfully!');
