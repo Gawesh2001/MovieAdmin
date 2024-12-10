@@ -26,7 +26,7 @@
             <li><a href="javascript:void(0);" id="manageMoviesLink" onclick="toggleManageMovies()">Manage Movies</a></li>
             <li><a href="CancelTickets.jsp">Cancel Tickets</a></li>
             <li><a href="settings.html">Settings</a></li>
-            <li><a href="LoginPage.jsp" id="logout" onclick="confirmLogout()">Logout</a></li>
+            <li><a href="LoginPage.jsp" id="logout"style="color: black; background-color: lightgray;" onmouseover="this.style.backgroundColor='red'; this.style.color='white';" onmouseout="this.style.backgroundColor='lightgray'; this.style.color='black';" onclick="confirmLogout()">Logout</a></li>
           
         </ul>
     </div>
