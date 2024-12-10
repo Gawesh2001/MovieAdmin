@@ -1,45 +1,49 @@
-/* Basic styling for the page */
-body {
+/* Reset margins and padding for all elements */
+* {
     margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
+    margin: 0;
 }
 
 /* Header styling */
 header {
     background-color: #003153;
     color: white;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     font-size: 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Container for movies */
+/* Ensure that the movies container is displayed as a grid with 4 columns */
 .movies-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly; /* Adjusts the alignment and space between containers */
-    gap: 15px; /* Reduced the gap between containers */
-    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    gap: 20px; /* Gap between movie containers */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* Individual movie container */
+/* Movie container styling */
 .movie-container {
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 19%; /* Fixed width for the container */
-    min-width: 50px; /* Minimum width for the container */
     padding: 15px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 370px; /* Fixed height for the container */
+    height: 400px; /* Fixed height for the container */
+    width: 100%;  /* Fixed width for the container */
+    overflow: hidden; /* Ensure content doesn't overflow */
 }
 
 /* Hover effect for movie container */
@@ -48,38 +52,79 @@ header {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Movie thumbnail styling */
+/* Styling for movie thumbnails to ensure they fit the container */
 .movie-thumbnail {
     width: 100%;
-    height: 200px; /* Fixed height for image */
+    height: 200px; /* Fixed height for images */
     object-fit: cover; /* Ensures the image fits within the container */
     border-radius: 5px;
     margin-bottom: 15px;
 }
 
-/* Button styling */
-button.book-button {
-    background-color: #003153;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button.book-button:hover {
-    background-color: #005687;
-}
-
-/* Styling for movie names, descriptions */
+/* Movie title styling */
 h2 {
     font-size: 1.2rem;
     color: #003153;
     margin: 10px 0;
 }
 
+/* Movie description and other text styling */
 p {
     font-size: 1rem;
     color: #555;
     margin: 5px 0;
+}
+
+/* View details button styling */
+.view-details-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #003153;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.view-details-btn:hover {
+    background-color: #005f73;
+}
+.action-button {
+    margin-top: 15px;
+    background-color: #003153; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.action-button:hover {
+    background-color: #add8e6; /* Light blue on hover */
+    color: black; /* Optional: change text color to black for better contrast */
+}
+
+
+
+/* Responsive design for medium screens */
+@media (max-width: 1200px) {
+    .movies-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+    }
+}
+
+/* Responsive design for small screens */
+@media (max-width: 800px) {
+    .movies-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+/* Responsive design for very small screens */
+@media (max-width: 500px) {
+    .movies-container {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
 }

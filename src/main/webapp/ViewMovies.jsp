@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="ViewMoviesCss.css">  <!-- Link to your external CSS file -->
 </head>
 <body>
-
-    <div class="movies-container">
-        <!-- Dynamic movie containers will be inserted here by the servlet -->
-        
-    </div>
      <iframe src="viewmovies" style="border:none; width:100%; height:100vh;"></iframe>
 </body>
 </html>

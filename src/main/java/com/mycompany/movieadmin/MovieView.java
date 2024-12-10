@@ -21,6 +21,7 @@ public class MovieView extends HttpServlet {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "2001";
     private static final String SELECT_QUERY = "SELECT * FROM addmovie";
+    private static final String DELETE_QUERY = "DELETE FROM addmovie WHERE movieid = ?";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,20 +29,12 @@ public class MovieView extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(SELECT_QUERY);
+             ResultSet rs = pstmt.executeQuery()) {
 
-        try {
             // Load JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establish connection
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-
-            // Execute SELECT query
-            pstmt = conn.prepareStatement(SELECT_QUERY);
-            rs = pstmt.executeQuery();
 
             // Start the response HTML
             out.println("<!DOCTYPE html>");
@@ -51,27 +44,37 @@ public class MovieView extends HttpServlet {
             out.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
             out.println("<title>View Movies</title>");
             out.println("<link rel=\"stylesheet\" href=\"/MovieAdmin/ViewMoviesCss.css\">");
+            out.println("<script>");
+            out.println("function confirmDelete(movieId) {");
+            out.println("    if (confirm('Are you sure you want to delete this movie?')) {");
+            out.println("        const form = document.getElementById('deleteForm-' + movieId);");
+            out.println("        form.submit();");
+            out.println("    }");
+            out.println("}");
+            out.println("</script>");
             out.println("</head>");
             out.println("<body>");
             out.println("<header><h1>Available Movies</h1></header>");
             out.println("<div class='movies-container'>");
 
-            // Check if there are movies and display them
             boolean hasMovies = false;
             while (rs.next()) {
                 hasMovies = true;
+                int movieId = rs.getInt("movieid"); // Ensure this matches your database column name
                 String movieName = rs.getString("movieName");
                 String movieCategory = rs.getString("movieCategory");
                 String releaseDate = rs.getString("releaseDate");
                 String movieThumbnail = rs.getString("movieThumbnail");
-                String movieDescription = rs.getString("movieDescription");
 
                 out.println("<div class='movie-container'>");
                 out.println("<img src='" + movieThumbnail + "' alt='" + movieName + "' class='movie-thumbnail'>");
                 out.println("<h2>" + movieName + "</h2>");
                 out.println("<p><strong>Category:</strong> " + movieCategory + "</p>");
                 out.println("<p><strong>Release Date:</strong> " + releaseDate + "</p>");
-                out.println("<p>" + movieDescription + "</p>");
+                out.println("<form id='deleteForm-" + movieId + "' action='/MovieAdmin/viewmovies' method='POST' style='display:inline;'>");
+                out.println("<input type='hidden' name='id' value='" + movieId + "'>");
+                out.println("<button type='button' class='action-button' onclick='confirmDelete(" + movieId + ")'>Delete</button>");
+                out.println("</form>");
                 out.println("</div>");
             }
 
@@ -84,15 +87,33 @@ public class MovieView extends HttpServlet {
             out.println("</html>");
 
         } catch (ClassNotFoundException | SQLException e) {
-            out.println("<p>Error: " + e.getMessage() + "</p>");
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (pstmt != null) pstmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+            e.printStackTrace();
+            out.println("<p>Error: Unable to load movies. Please try again later.</p>");
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(DELETE_QUERY)) {
+
+            int movieId = Integer.parseInt(request.getParameter("id"));
+            pstmt.setInt(1, movieId);
+            int rowsDeleted = pstmt.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                out.println("<script>alert('Movie deleted successfully!'); window.location.href='/MovieAdmin/viewmovies';</script>");
+            } else {
+                out.println("<script>alert('Failed to delete the movie.'); window.location.href='/MovieAdmin/viewmovies';</script>");
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            out.println("<script>alert('Error: Unable to delete movie. Please try again later.'); window.location.href='/MovieAdmin/viewmovies';</script>");
         }
     }
 }

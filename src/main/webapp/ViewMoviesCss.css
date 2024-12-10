@@ -1,12 +1,13 @@
 /* Reset margins and padding for all elements */
 * {
     margin: 0;
-    padding: 0;
+    padding: 0px;
     box-sizing: border-box;
 }
 
 /* Body styles */
 body {
+    
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
@@ -16,7 +17,7 @@ body {
 header {
     background-color: #003153;
     color: white;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     font-size: 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -41,7 +42,7 @@ header {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 400px; /* Fixed height for the container */
-    width: 240px;  /* Fixed width for the container */
+    width: 100%;  /* Fixed width for the container */
     overflow: hidden; /* Ensure content doesn't overflow */
 }
 
@@ -88,6 +89,21 @@ p {
 .view-details-btn:hover {
     background-color: #005f73;
 }
+.action-button {
+    background-color: red; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.action-button:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
 
 /* Responsive design for medium screens */
 @media (max-width: 1200px) {
