@@ -26,7 +26,8 @@
             <li><a href="javascript:void(0);" id="manageMoviesLink" onclick="toggleManageMovies()">Manage Movies</a></li>
             <li><a href="users.html">Cancel Tickets</a></li>
             <li><a href="settings.html">Settings</a></li>
-            <li><a href="logout.html" class="logout">Logout</a></li>
+            <li><a href="LoginPage.jsp" id="logout" onclick="confirmLogout()">Logout</a></li>
+          
         </ul>
     </div>
 
