@@ -31,6 +31,7 @@ header {
     box-sizing: border-box;
 }
 
+/* Movie container styling */
 .movie-container {
     background: #fff;
     border: 1px solid #ddd;
@@ -39,32 +40,41 @@ header {
     padding: 15px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 400px; /* Fixed height for the container */
+    width: 240px;  /* Fixed width for the container */
+    overflow: hidden; /* Ensure content doesn't overflow */
 }
 
+/* Hover effect for movie container */
 .movie-container:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* Styling for movie thumbnails to ensure they fit the container */
 .movie-thumbnail {
     width: 100%;
-    height: auto;
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Ensures the image fits within the container */
     border-radius: 5px;
     margin-bottom: 15px;
 }
 
+/* Movie title styling */
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #003153;
     margin: 10px 0;
 }
 
+/* Movie description and other text styling */
 p {
     font-size: 1rem;
     color: #555;
     margin: 5px 0;
 }
 
+/* View details button styling */
 .view-details-btn {
     display: inline-block;
     margin-top: 10px;
@@ -79,31 +89,21 @@ p {
     background-color: #005f73;
 }
 
-/* Movie title styling */
-h2 {
-    font-size: 1.5rem;
-    color: #003153;
-    margin: 10px 0;
-}
-
-/* Movie description and other text styling */
-p {
-    font-size: 1rem;
-    color: #555;
-    margin: 5px 0;
-}
+/* Responsive design for medium screens */
 @media (max-width: 1200px) {
     .movies-container {
         grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
     }
 }
 
+/* Responsive design for small screens */
 @media (max-width: 800px) {
     .movies-container {
         grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
     }
 }
 
+/* Responsive design for very small screens */
 @media (max-width: 500px) {
     .movies-container {
         grid-template-columns: 1fr; /* 1 column on very small screens */
