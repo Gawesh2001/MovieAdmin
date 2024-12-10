@@ -1,78 +1,98 @@
 package com.mycompany.movieadmin;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/getMovies")
+@WebServlet(urlPatterns = {"/viewmovies"})
 public class MovieView extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/abccinema";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "2001";
+    private static final String SELECT_QUERY = "SELECT * FROM addmovie";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 
-        List<Movie> movieList = new ArrayList<>();
-        String query = "SELECT * FROM addmovie";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+        try {
+            // Load JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
+            // Establish connection
+            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            // Execute SELECT query
+            pstmt = conn.prepareStatement(SELECT_QUERY);
+            rs = pstmt.executeQuery();
+
+            // Start the response HTML
+            out.println("<!DOCTYPE html>");
+            out.println("<html lang='en'>");
+            out.println("<head>");
+            out.println("<meta charset='UTF-8'>");
+            out.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
+            out.println("<title>View Movies</title>");
+            out.println("<link rel=\"stylesheet\" href=\"/MovieAdmin/ViewMoviesCss.css\">");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<header><h1>Available Movies</h1></header>");
+            out.println("<div class='movies-container'>");
+
+            // Check if there are movies and display them
+            boolean hasMovies = false;
             while (rs.next()) {
-                Movie movie = new Movie();
-                movie.setMovieName(rs.getString("movieName"));
-                movie.setMovieCategory(rs.getString("movieCategory"));
-                movie.setReleaseDate(rs.getString("releaseDate"));
-                movie.setShowingDateTime(rs.getString("showingDateTime"));
-                movie.setMovieThumbnail(rs.getString("movieThumbnail"));
-                movie.setMovieDescription(rs.getString("movieDescription"));
-                movieList.add(movie);
+                hasMovies = true;
+                String movieName = rs.getString("movieName");
+                String movieCategory = rs.getString("movieCategory");
+                String releaseDate = rs.getString("releaseDate");
+                String movieThumbnail = rs.getString("movieThumbnail");
+                String movieDescription = rs.getString("movieDescription");
+
+                out.println("<div class='movie-container'>");
+                out.println("<img src='" + movieThumbnail + "' alt='" + movieName + "' class='movie-thumbnail'>");
+                out.println("<h2>" + movieName + "</h2>");
+                out.println("<p><strong>Category:</strong> " + movieCategory + "</p>");
+                out.println("<p><strong>Release Date:</strong> " + releaseDate + "</p>");
+                out.println("<p>" + movieDescription + "</p>");
+                out.println("</div>");
             }
 
-            request.setAttribute("movieList", movieList);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("displayMovies.jsp");
-            dispatcher.forward(request, response);
+            if (!hasMovies) {
+                out.println("<p>No movies available at the moment.</p>");
+            }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.getWriter().write("Database error: " + e.getMessage());
+            out.println("</div>"); // Close movies-container
+            out.println("</body>");
+            out.println("</html>");
+
+        } catch (ClassNotFoundException | SQLException e) {
+            out.println("<p>Error: " + e.getMessage() + "</p>");
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
-    }
-
-    // Movie class to hold movie data
-    public static class Movie {
-        private String movieName;
-        private String movieCategory;
-        private String releaseDate;
-        private String showingDateTime;
-        private String movieThumbnail;
-        private String movieDescription;
-
-        // Getters and Setters
-        public String getMovieName() { return movieName; }
-        public void setMovieName(String movieName) { this.movieName = movieName; }
-
-        public String getMovieCategory() { return movieCategory; }
-        public void setMovieCategory(String movieCategory) { this.movieCategory = movieCategory; }
-
-        public String getReleaseDate() { return releaseDate; }
-        public void setReleaseDate(String releaseDate) { this.releaseDate = releaseDate; }
-
-        public String getShowingDateTime() { return showingDateTime; }
-        public void setShowingDateTime(String showingDateTime) { this.showingDateTime = showingDateTime; }
-
-        public String getMovieThumbnail() { return movieThumbnail; }
-        public void setMovieThumbnail(String movieThumbnail) { this.movieThumbnail = movieThumbnail; }
-
-        public String getMovieDescription() { return movieDescription; }
-        public void setMovieDescription(String movieDescription) { this.movieDescription = movieDescription; }
     }
 }

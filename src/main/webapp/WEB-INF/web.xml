@@ -33,15 +33,7 @@
     
     
     
-    <servlet>
-        <servlet-name>MovieView</servlet-name>
-        <servlet-class>com.mycompany.movieadmin.MovieView</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>MovieView</servlet-name>
-        <url-pattern>/getMovie</url-pattern>
-    </servlet-mapping>
+   
     
     
     

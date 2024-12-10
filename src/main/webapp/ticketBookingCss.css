@@ -1,0 +1,85 @@
+/* Basic styling for the page */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Header styling */
+header {
+    background-color: #003153;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for movies */
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Adjusts the alignment and space between containers */
+    gap: 15px; /* Reduced the gap between containers */
+    padding: 30px;
+}
+
+/* Individual movie container */
+.movie-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 19%; /* Fixed width for the container */
+    min-width: 50px; /* Minimum width for the container */
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 370px; /* Fixed height for the container */
+}
+
+/* Hover effect for movie container */
+.movie-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Movie thumbnail styling */
+.movie-thumbnail {
+    width: 100%;
+    height: 200px; /* Fixed height for image */
+    object-fit: cover; /* Ensures the image fits within the container */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+button.book-button {
+    background-color: #003153;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.book-button:hover {
+    background-color: #005687;
+}
+
+/* Styling for movie names, descriptions */
+h2 {
+    font-size: 1.2rem;
+    color: #003153;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+}
