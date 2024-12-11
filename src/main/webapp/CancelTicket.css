@@ -77,10 +77,8 @@ input:focus, textarea:focus {
     border-color: #4CAF50;
     outline: none;
 }
-
-/* Submit Button */
-.btn-submit {
-    background-color: #4CAF50;
+.cancel-btn{
+    background-color: #003153;
     color: white;
     border: none;
     padding: 1rem;
@@ -90,7 +88,8 @@ input:focus, textarea:focus {
     transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
-    background-color: #45a049;
+
+.cancel-btn:hover {
+    background-color: #005687;
 }
 

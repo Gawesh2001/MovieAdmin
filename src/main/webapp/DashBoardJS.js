@@ -36,4 +36,10 @@ menuBtn.addEventListener('click', () => {
     sidebar.classList.toggle('hidden');
 });
 
+function confirmLogout() {
+    const userConfirmed = confirm("Are you sure you want to log out?");
+    if (userConfirmed) {
+        window.location.href = "Login.jsp"; // Redirect to the login page if confirmed
+    }
+}
 
