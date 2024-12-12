@@ -16,12 +16,7 @@
     />
     <div class="movie-details">
       <p>PVR One Galle Face Mall ? 22 Nov 24, 03:00 PM</p>
-      <label for="movie">Select Ticket Type:</label>
-      <select id="movie">
-        <option value="1500">Basic (RS. 1500)</option>
-        <option value="2000">Standard (RS. 2000)</option>
-        <option value="2600">Premium (RS. 2600)</option>
-      </select>
+      
     </div>
   </div>
 
@@ -39,6 +34,11 @@
       <small>Sold</small>
     </li>
   </ul>
+  <div class="time-selection">
+  <button class="time-button">1.00 PM - 3.30 PM</button>
+  <button class="time-button">4.00 PM - 6.30 PM</button>
+  <button class="time-button">7.00 PM - 9.30 PM</button>
+</div>
 
   <div class="screen"></div>
   
@@ -98,6 +98,22 @@
       <div class="seat">C16</div>
       <div class="seat">C17</div>
  
+
+    </div>
+      
+      <div class="row">
+        
+      <div class="pseat">P01</div>
+      <div class="pseat">P02</div>
+      <div class="pseat">P03</div>
+      <div class="pseat">P04</div>
+      <div class="pseat">P05</div>
+      <div class="paisle"></div>
+      <div class="pseat">P06</div>
+      <div class="pseat">P07</div>
+      <div class="pseat">P08</div>
+      <div class="pseat">P09</div>
+      <div class="pseat">P10</div>
  
     </div>
       

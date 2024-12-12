@@ -74,36 +74,119 @@ select:focus {
   margin-top: 5px;
 }
 
+/* Time Selection Section */
+.time-selection {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  gap: 10px; /* Space between buttons */
+}
+
+.time-button {
+  background-color: #C7E5FF;
+  color: #303030;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.time-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.time-button:active {
+  background-color: #004085;
+}
+
+
 .seat {
   background-color: #444451;
-  height: 30px;
-  width: 30px;
+  height: 33px;
+  width: 33px;
   margin: 5px;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  font-family: "Poppins", sans-serif; /* Modern font */
-  font-weight: bold; /* Bold text */
-  font-size: 12px; /* Adjust the size to your preference */
-  color: #fff; /* White text for contrast */
-  text-align: center; /* Center text horizontally */
-  line-height: 30px; /* Center text vertically */
-  cursor: pointer; /* Pointer cursor for interactivity */
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2), 
+              inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              0 4px 10px rgba(0, 0, 0, 0.4);
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
 }
 
 .seat.selected {
   background-color: #6feaf6;
   color: #000;
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2), 
+              inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              0 6px 12px rgba(0, 150, 200, 0.5); /* Glow for selected */
 }
 
 .seat.sold {
   background-color: #ff6f61;
   cursor: not-allowed;
+  box-shadow: inset -1px -1px 2px rgba(255, 255, 255, 0.2),
+              inset 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 .seat:not(.sold):hover {
   transform: scale(1.2);
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.3),
+              inset 2px 2px 5px rgba(0, 0, 0, 0.6),
+              0 6px 12px rgba(0, 0, 0, 0.6); /* More shadow on hover */
 }
+
+
+/* Premium Seat Styling */
+.pseat {
+  background-color: #E8DAEF;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2), 
+              inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              0 4px 10px rgba(0, 0, 0, 0.4);
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #4A235A;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.pseat.selected {
+  background-color: #6feaf6;
+  color: #000;
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2), 
+              inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              0 6px 12px rgba(0, 150, 200, 0.5); /* Glow for selected */
+}
+
+.pseat.sold {
+  background-color: #ff6f61;
+  cursor: not-allowed;
+  box-shadow: inset -1px -1px 2px rgba(255, 255, 255, 0.2),
+              inset 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.pseat:not(.sold):hover {
+  transform: scale(1.2);
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.3),
+              inset 2px 2px 5px rgba(0, 0, 0, 0.6),
+              0 6px 12px rgba(0, 0, 0, 0.6); /* More shadow on hover */
+}
+
 
 .container {
   display: flex;
@@ -131,6 +214,9 @@ select:focus {
 .row:nth-child(3) {
   grid-template-columns: repeat(19, 30px);
 }
+.row:nth-child(4) {
+  grid-template-columns: repeat(11, 40px);
+}
 
 .aisle {
   width: 20px;
@@ -142,13 +228,13 @@ select:focus {
   background: linear-gradient(200deg, #2d2d2d, #1a1a1a); /* Faded black for screen */
   height: 175px;
   width: 60%;
-  margin: 10px auto;
+  margin: 0px auto;
   border-radius: 50px / 20px; /* Elliptical curvature for top and bottom */
   box-shadow: 
     0 4px 8px rgba(0, 0, 0, 0.4), /* Outer shadow for depth */
     inset 0 -5px 10px rgba(10, 0, 0, 0.7), /* Inner shadow for screen depth */
     inset 0 8px 15px rgba(255, 255, 255, 2.1); /* Light reflection effect */
-  transform: perspective(600px) rotateX(-65deg) scaleY(1.0); /* Perspective for top view */
+  transform: perspective(600px) rotateX(-65deg) scaleY(1.5); /* Perspective for top view */
   border: 5px solid #444; /* Bezel for the screen */
   overflow: hidden; /* To keep the curved shape intact */
 }
@@ -183,6 +269,11 @@ select:focus {
 }
 
 
+.time-button.selected {
+  background-color: #6c5ce7; /* Highlighted color */
+  color: #fff;
+  transform: scale(1.1);
+}
 
 
 button {
