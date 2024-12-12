@@ -55,6 +55,18 @@
                     <input type="text" id="movieThumbnail" name="movieThumbnail" placeholder="Enter thumbnail URL"
                         required class="form-control">
                 </div>
+                
+                <div class="form-group">
+                    <label for="trailer">Movie Trailer</label>
+                    <input type="text" id="trailer" name="trailer" placeholder="Enter Trailer URL"
+                        required class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">Movie Duration</label>
+                    <input type="text" id="duration" name="duration" placeholder="Enter the duration "
+                        required class="form-control">
+                </div>
 
                 <div class="form-group">
                     <label for="movieDescription">Movie Description</label>
