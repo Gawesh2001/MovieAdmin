@@ -7,20 +7,13 @@
   <link rel="stylesheet" href="SeatCss.css" />
 </head>
 <body>
-  <h1>Wicked - Movie Seat Booking</h1>
-  <div class="movie-container">
-    <img
-      src="C:/Users/buddi/OneDrive/Desktop/wicked.jpg"
-      alt="Movie Poster"
-      class="movie-poster"
-    />
-    <div class="movie-details">
-      <p>PVR One Galle Face Mall ? 22 Nov 24, 03:00 PM</p>
-      
-    </div>
-  </div>
+  <!-- Display the movie name dynamically -->
+  <h1>${param.movieName} - Movie Seat Booking</h1>
+   <p>ABC Cinema Galle Face Mall</p>
+   <p><strong>Description: All the Movies we are showing has the 100% authraization from the Movie owner </strong> ${param.movieDescription}</p>
 
-  <ul class="showcase">
+   
+     <ul class="showcase">
     <li>
       <div class="seat"></div>
       <small>Available</small>
@@ -34,17 +27,39 @@
       <small>Sold</small>
     </li>
   </ul>
-  <div class="time-selection">
-  <button class="time-button">1.00 PM - 3.30 PM</button>
-  <button class="time-button">4.00 PM - 6.30 PM</button>
-  <button class="time-button">7.00 PM - 9.30 PM</button>
-</div>
 
-  <div class="screen"></div>
-  
+  <!-- Time selection buttons -->
+  <div class="time-selection">
+    <button class="time-button">1.00 PM - 3.30 PM</button>
+    <button class="time-button">4.00 PM - 6.30 PM</button>
+    <button class="time-button">7.00 PM - 9.30 PM</button>
+  </div>
+   
+   
+  <div class="movie-container">
+    <!-- Dynamically set the movie poster image -->
+    <img
+      src="${param.movieThumbnail}"
+      alt="${param.movieName} Poster"
+      class="movie-poster"
+    />
+    
+  <div class="movie-details">
+      
+     
+      
+    </div>
+  </div>
+
+  <!-- Showcase for seat statuses -->
+
+
+  <!-- Screen display -->
+  <!-- <div class="screen"></div> -->
+
+  <!-- Seat rows for booking -->
   <div class="container">
     <div class="row">
-        
       <div class="seat">A01</div>
       <div class="seat">A02</div>
       <div class="seat">A03</div>
@@ -55,11 +70,9 @@
       <div class="seat">A07</div>
       <div class="seat">A08</div>
       <div class="seat">A09</div>
- 
     </div>
-      <div class="row">
-          
-          
+
+    <div class="row">
       <div class="seat">B01</div>
       <div class="seat">B02</div>
       <div class="seat">B03</div>
@@ -67,18 +80,16 @@
       <div class="seat">B05</div>
       <div class="seat">B06</div>
       <div class="seat">B07</div>
-            <div class="aisle"></div>
+      <div class="aisle"></div>
       <div class="seat">B08</div>
       <div class="seat">B09</div>
       <div class="seat">B10</div>
       <div class="seat">B11</div>
       <div class="seat">B12</div>
       <div class="seat">B13</div>
- 
- 
     </div>
-      <div class="row">
-        
+
+    <div class="row">
       <div class="seat">C01</div>
       <div class="seat">C02</div>
       <div class="seat">C03</div>
@@ -97,12 +108,9 @@
       <div class="seat">C15</div>
       <div class="seat">C16</div>
       <div class="seat">C17</div>
- 
-
     </div>
-      
-      <div class="row">
-        
+
+    <div class="row">
       <div class="pseat">P01</div>
       <div class="pseat">P02</div>
       <div class="pseat">P03</div>
@@ -114,18 +122,18 @@
       <div class="pseat">P08</div>
       <div class="pseat">P09</div>
       <div class="pseat">P10</div>
- 
     </div>
-      
-    <!-- Add more rows if necessary -->
   </div>
 
+  <!-- Seat selection summary -->
   <p class="text">
     You have selected <span id="count">0</span> seat(s) for a total price of RS.<span id="total">0</span>.
   </p>
 
+  <!-- Confirm booking button -->
   <button id="confirm">Confirm Booking</button>
 
+  <!-- Link to JavaScript for functionality -->
   <script src="SeatsJS.js"></script>
 </body>
 </html>

@@ -21,7 +21,6 @@ public class MovieServlet extends HttpServlet {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "2001";
     private static final String SELECT_QUERY = "SELECT * FROM addmovie";
-    private static final String DELETE_QUERY = "DELETE FROM addmovie WHERE movieid = ?";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -65,16 +64,17 @@ public class MovieServlet extends HttpServlet {
                 String movieCategory = rs.getString("movieCategory");
                 String releaseDate = rs.getString("releaseDate");
                 String movieThumbnail = rs.getString("movieThumbnail");
+                
 
                 out.println("<div class='movie-container'>");
                 out.println("<img src='" + movieThumbnail + "' alt='" + movieName + "' class='movie-thumbnail'>");
                 out.println("<h2>" + movieName + "</h2>");
                 out.println("<p><strong>Category:</strong> " + movieCategory + "</p>");
                 out.println("<p><strong>Release Date:</strong> " + releaseDate + "</p>");
+                
                 out.println("<form id='deleteForm-" + movieId + "' action='/MovieAdmin/viewmovies' method='POST' style='display:inline;'>");
                 out.println("<input type='hidden' name='id' value='" + movieId + "'>");
-                out.println("<button type='button' class='action-button' onclick='window.location.href=\"Seats.jsp?movieId=" + movieId + "\"'>Buy Ticket</button>");
-
+                out.println("<button type='button' class='action-button' onclick='window.location.href=\"Seats.jsp?movieid=" + movieId + "&movieName=" + movieName + "&movieThumbnail=" + movieThumbnail + "\"'>Buy Ticket</button>");
                 out.println("</form>");
                 out.println("</div>");
             }
@@ -92,5 +92,4 @@ public class MovieServlet extends HttpServlet {
             out.println("<p>Error: Unable to load movies. Please try again later.</p>");
         }
     }
-
 }

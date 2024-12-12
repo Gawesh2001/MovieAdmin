@@ -1,11 +1,12 @@
 /* General Reset */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
+  margin: 40px;
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #1f1c2c, #928dab);
   color: #fff;
@@ -22,6 +23,7 @@ h1, p {
 }
 
 .movie-container {
+   
   display: flex;
   align-items: flex-start;
   gap: 20px;
@@ -29,13 +31,34 @@ h1, p {
 }
 
 .movie-poster {
-  width: 180px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin: 30px;
+  width: 1000px; /* Fixed width */
+  height: 280px; /* Fixed height */
+  object-fit: cover; /* Ensures the image scales to fit within the dimensions without distortion */
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),   /* Original shadow */
+    0 15px 30px rgba(0, 0, 0, 0.5), /* Additional shadow for 3D effect */
+    0 20px 40px rgba(0, 0, 0, 0.7); /* Bottom shadow for depth */
+  transform: perspective(1000px) rotateX(0deg) rotateY(-0deg); /* Initial state with no rotation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
+.movie-poster:hover {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05); /* Reset tilt and add slight scaling */
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.4), 
+    0 20px 35px rgba(0, 0, 0, 0.6),
+    0 30px 50px rgba(0, 0, 0, 0.8); /* Enhanced shadow on hover */
+}
+
+
+
 .movie-details {
+  
   flex: 1;
+  
+  
 }
 
 select {
@@ -59,7 +82,7 @@ select:focus {
   display: flex;
   justify-content: space-between;
   max-width: 400px;
-  margin: 20px auto;
+  margin: 0px auto;
   gap: 10px;
 }
 
@@ -102,12 +125,15 @@ select:focus {
   background-color: #004085;
 }
 
+/* Seat Styling (For normal and premium seats) */
+
+/* Rest of your code remains the same */
 
 .seat {
   background-color: #444451;
   height: 33px;
   width: 33px;
-  margin: 5px;
+  margin: 0px;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
   box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2), 
@@ -144,8 +170,6 @@ select:focus {
               0 6px 12px rgba(0, 0, 0, 0.6); /* More shadow on hover */
 }
 
-
-/* Premium Seat Styling */
 .pseat {
   background-color: #E8DAEF;
   height: 40px;
