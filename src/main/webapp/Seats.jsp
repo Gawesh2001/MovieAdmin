@@ -27,6 +27,12 @@
       <small>Sold</small>
     </li>
   </ul>
+   
+<div class="date-selection">
+  <label for="movie-date">Select Date:</label>
+  <input type="date" id="movie-date" class="date-picker" />
+  <span id="selected-date" class="selected-date"></span>
+</div>
 
   <!-- Time selection buttons -->
   <div class="time-selection">

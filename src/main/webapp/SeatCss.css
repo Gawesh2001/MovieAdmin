@@ -83,7 +83,8 @@ select:focus {
   justify-content: space-between;
   max-width: 400px;
   margin: 0px auto;
-  gap: 10px;
+  gap: 20px;
+    
 }
 
 .showcase li {
@@ -314,6 +315,36 @@ button {
 button:hover {
   background-color: #a29bfe;
 }
+
+.date-selection {
+    margin: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.date-selection label {
+   
+  font-size: 16px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.date-picker {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.selected-date {
+  font-size: 14px;
+  font-weight: bold;
+  color: #007bff;
+}
+
 
 @media screen and (max-width: 600px) {
   .movie-container {

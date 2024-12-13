@@ -74,7 +74,6 @@ p {
     color: #555;
     margin: 5px 0;
 }
-
 /* View details button styling */
 .view-details-btn {
     display: inline-block;
@@ -84,24 +83,11 @@ p {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
+    
 }
 
 .view-details-btn:hover {
     background-color: #005f73;
-}
-.action-button {
-    background-color: red; /* Button background color */
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Padding for the button */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Font size */
-    transition: background-color 0.3s ease; /* Smooth hover transition */
-}
-
-.action-button:hover {
-    background-color: darkred; /* Darker red on hover */
 }
 
 

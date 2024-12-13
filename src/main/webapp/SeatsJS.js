@@ -4,27 +4,28 @@ const count = document.getElementById("count");
 const total = document.getElementById("total");
 const confirmButton = document.getElementById("confirm");
 const timeButtons = document.querySelectorAll(".time-button");
+const datePicker = document.getElementById("movie-date");
+const selectedDateDisplay = document.getElementById("selected-date");
 
 const normalSeatPrice = 1000; // Price for normal seats
 const premiumSeatPrice = 2500; // Price for premium seats
 
-let selectedTime = "";
+let selectedTime = ""; // Variable to store the selected time
 
 // Handle time selection
 timeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     // Remove 'selected' class from all buttons
     timeButtons.forEach((btn) => btn.classList.remove("selected"));
-    
+
     // Add 'selected' class to the clicked button
     button.classList.add("selected");
-    
+
     // Update the selected time
     selectedTime = button.textContent;
 
-    // Display the selected time in the text below
-    const timeDisplay = document.querySelector(".text");
-    timeDisplay.innerHTML = `You have selected <span id="count">${count.innerText}</span> seat(s) for a total price of RS.<span id="total">${total.innerText}</span>. Time is - ${selectedTime}.`;
+    // Update the display text
+    updateSelectedText();
   });
 });
 
@@ -36,6 +37,7 @@ container.addEventListener("click", (e) => {
   ) {
     e.target.classList.toggle("selected");
     updateSelectedCount();
+    updateSelectedText();
   }
 });
 
@@ -54,15 +56,42 @@ function updateSelectedCount() {
     }
   });
 
+  // Update the text fields for count and total
   count.innerText = selectedSeatsCount;
   total.innerText = totalPrice;
 }
 
+// Update the text field below with the current selection
+function updateSelectedText() {
+  const timeDisplay = document.querySelector(".text");
+
+  // Default to "No time selected" if no time is set yet
+  const timeText = selectedTime || "No time selected";
+
+  // Default to "No date selected" if no date is set yet
+  const selectedDate = selectedDateDisplay.textContent || "No date selected";
+
+  // Update the text with the selected time, seat count, and total price
+  timeDisplay.innerHTML = `You have selected <span id="count">${count.innerText}</span> seat(s) for a total price of RS.<span id="total">${total.innerText}</span>. Date is - ${selectedDate}. Time is - ${timeText}.`;
+}
+
 // Confirm booking and show the alert
 confirmButton.addEventListener("click", () => {
-  alert(`Booking confirmed for ${count.innerText} seat(s)!`);
+  if (!selectedTime) {
+    alert("Please select a time before confirming your booking.");
+    return;
+  }
+  alert(`Booking confirmed for ${count.innerText} seat(s) at ${selectedTime}!`);
 });
 
+// Handle date selection
+datePicker.addEventListener("change", function () {
+  const selectedDate = this.value;
+  selectedDateDisplay.textContent = `Selected Date: ${selectedDate}`;
+  updateSelectedText();
+});
+
+// Scroll effect on movie poster
 document.addEventListener("scroll", () => {
   const poster = document.querySelector(".movie-poster");
 
@@ -70,28 +99,20 @@ document.addEventListener("scroll", () => {
     // Get scroll position
     const scrollPosition = window.scrollY;
 
-    // Log the scroll position for debugging
-    console.log("Scroll Position:", scrollPosition);
-
     // Calculate the rotation value based on scroll position
-    // The rotateX will go from 0deg to -65deg as you scroll down (rotating in the opposite direction)
     const rotateX = Math.max(-65, -scrollPosition / 6.5); // RotateX up to -65 degrees (opposite direction)
 
     // Apply the new transform value to the movie poster
-    poster.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(-0deg)`; 
-  } else {
-    console.log("Movie poster not found.");
+    poster.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(0deg)`;
   }
 });
 
+// Scroll effect on seats
 document.addEventListener("scroll", () => {
   const seats = document.querySelectorAll(".seat, .pseat"); // Select all normal and premium seats
 
   // Get scroll position
   const scrollPosition = window.scrollY;
-
-  // Log the scroll position for debugging
-  console.log("Scroll Position:", scrollPosition);
 
   // If scroll position is above 0, apply the light effect; otherwise, remove it
   if (scrollPosition > 0) {
@@ -120,6 +141,37 @@ document.addEventListener("scroll", () => {
   }
 });
 
+document.getElementById("confirm").addEventListener("click", () => {
+  // Get the selected seats, time, and date
+  const selectedSeats = document.querySelectorAll(".row .seat.selected, .row .pseat.selected");
+  const selectedTimeButton = document.querySelector(".time-button.selected");
+  const selectedDate = document.getElementById("movie-date").value;
+
+  // Initialize an empty array to store missing selections
+  let missingSelections = [];
+
+  // Check for missing selections and push corresponding messages to the array
+  if (selectedSeats.length === 0) {
+    missingSelections.push("seats");
+  }
+  if (!selectedTimeButton) {
+    missingSelections.push("time slot");
+  }
+  if (!selectedDate) {
+    missingSelections.push("date");
+  }
+
+  // If there are missing selections, display an alert
+  if (missingSelections.length > 0) {
+    alert(`Please select the following before confirming your booking: ${missingSelections.join(", ")}.`);
+    return;
+  }
+
+  // If all validations pass, confirm the booking
+  alert(`Booking confirmed for ${selectedSeats.length} seat(s) on ${selectedDate} at ${selectedTimeButton.textContent}!`);
+});
 
 
+// Initial updates
 updateSelectedCount();
+updateSelectedText();
