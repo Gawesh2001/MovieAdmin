@@ -10,8 +10,8 @@ const selectedDateDisplay = document.getElementById("selected-date");
 const normalSeatPrice = 1000; // Price for normal seats
 const premiumSeatPrice = 2500; // Price for premium seats
 
-let selectedTime = ""; // Variable to store the selected time
 
+let timeSelected = false;
 // Handle time selection
 timeButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -61,23 +61,10 @@ function updateSelectedCount() {
   total.innerText = totalPrice;
 }
 
-// Update the text field below with the current selection
-function updateSelectedText() {
-  const timeDisplay = document.querySelector(".text");
-
-  // Default to "No time selected" if no time is set yet
-  const timeText = selectedTime || "No time selected";
-
-  // Default to "No date selected" if no date is set yet
-  const selectedDate = selectedDateDisplay.textContent || "No date selected";
-
-  // Update the text with the selected time, seat count, and total price
-  timeDisplay.innerHTML = `You have selected <span id="count">${count.innerText}</span> seat(s) for a total price of RS.<span id="total">${total.innerText}</span>. Date is - ${selectedDate}. Time is - ${timeText}.`;
-}
 
 // Confirm booking and show the alert
 confirmButton.addEventListener("click", () => {
-  if (!selectedTime) {
+  if (!timeSelected) {
     alert("Please select a time before confirming your booking.");
     return;
   }
@@ -170,6 +157,7 @@ document.getElementById("confirm").addEventListener("click", () => {
   // If all validations pass, confirm the booking
   alert(`Booking confirmed for ${selectedSeats.length} seat(s) on ${selectedDate} at ${selectedTimeButton.textContent}!`);
 });
+
 
 
 // Initial updates

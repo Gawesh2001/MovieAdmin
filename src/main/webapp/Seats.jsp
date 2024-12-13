@@ -12,7 +12,10 @@
    <p>ABC Cinema Galle Face Mall</p>
    <p><strong>Description: All the Movies we are showing has the 100% authraization from the Movie owner </strong> ${param.movieDescription}</p>
 
-   
+   <!-- Display the Movie ID -->
+  <h6>Movie ID- ${param.movieid}</h6>
+  
+  
      <ul class="showcase">
     <li>
       <div class="seat"></div>
@@ -34,12 +37,14 @@
   <span id="selected-date" class="selected-date"></span>
 </div>
 
-  <!-- Time selection buttons -->
-  <div class="time-selection">
-    <button class="time-button">1.00 PM - 3.30 PM</button>
-    <button class="time-button">4.00 PM - 6.30 PM</button>
-    <button class="time-button">7.00 PM - 9.30 PM</button>
-  </div>
+<div class="time-selection">
+    <label for="movie-time" style="font-size: 16px; margin-top: 10px; font-weight: bold;">Show Time:</label>
+
+    <button id="movie-time" class="time-picker">${param.timeframe}</button>
+    
+
+</div>
+
    
    
   <div class="movie-container">
