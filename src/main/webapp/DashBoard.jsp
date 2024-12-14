@@ -22,7 +22,6 @@
         <ul class="menu">
             <li><a href="ticketBooking.jsp">Book A Movie</a></li>
             <li><a href="reports.html">Reports</a></li>
-            <li><a href="payments.html">Payments</a></li>
             <li><a href="javascript:void(0);" id="manageMoviesLink" onclick="toggleManageMovies()">Manage Movies</a></li>
             <li><a href="CancelTickets.jsp">Cancel Tickets</a></li>
             <li><a href="FeedbackJS.jsp">Feedback</a></li>
