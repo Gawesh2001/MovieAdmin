@@ -23,6 +23,14 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.hero-icon {
+    width: 10px;
+    height: 10px;
+    stroke: white;
+    fill: #ff8800;
+    background-color: #ff8800;
+}
+
 /* Ensure that the movies container is displayed as a grid with 4 columns */
 .movies-container {
     display: grid;
@@ -41,7 +49,7 @@ header {
     padding: 15px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 400px; /* Fixed height for the container */
+    height: 450px; /* Fixed height for the container */
     width: 100%;  /* Fixed width for the container */
     overflow: hidden; /* Ensure content doesn't overflow */
 }

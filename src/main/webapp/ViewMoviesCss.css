@@ -9,19 +9,50 @@
 body {
     
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #282828;
     margin: 0;
 }
 
 /* Header styling */
 header {
-    background-color: #003153;
+    display: flex;
+    align-items: center;
+    background-color: #111;
     color: white;
     padding: 30px;
-    text-align: center;
-    font-size: 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure relative positioning for the button */
 }
+
+.back-button {
+    position: absolute; /* This allows it to stay on the left */
+    left: 30px; /* Adjust distance from the left */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Fine-tune vertical centering */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.size-6 {
+    width: 30px; /* Adjust icon size */
+    height: 30px;
+    color: white;
+}
+
+h1 {
+    flex-grow: 1; /* This makes the h1 take up remaining space */
+    text-align: center;
+    font-size: 4rem;
+}
+
+
 
 /* Ensure that the movies container is displayed as a grid with 4 columns */
 .movies-container {
@@ -32,19 +63,7 @@ header {
     box-sizing: border-box;
 }
 
-/* Movie container styling */
-.movie-container {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 400px; /* Fixed height for the container */
-    width: 100%;  /* Fixed width for the container */
-    overflow: hidden; /* Ensure content doesn't overflow */
-}
+
 
 /* Hover effect for movie container */
 .movie-container:hover {
@@ -52,21 +71,10 @@ header {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Styling for movie thumbnails to ensure they fit the container */
-.movie-thumbnail {
-    width: 100%;
-    height: 200px; /* Fixed height for images */
-    object-fit: cover; /* Ensures the image fits within the container */
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
 
-/* Movie title styling */
-h2 {
-    font-size: 1.2rem;
-    color: #003153;
-    margin: 10px 0;
-}
+
+
+
 
 /* Movie description and other text styling */
 p {
@@ -90,6 +98,17 @@ p {
     background-color: #005f73;
 }
 
+/*.update-button {
+    background-color: #ff8800;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+}*/
+
 
 /* Responsive design for medium screens */
 @media (max-width: 1200px) {
@@ -111,3 +130,106 @@ p {
         grid-template-columns: 1fr; /* 1 column on very small screens */
     }
 }
+
+/* Movie container styling */
+.movie-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    height: 500px;
+    width: 300px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Movie poster image */
+.movie-poster img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Movie title styling */
+.movie-info h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Category and release date styling */
+.movie-info .category, .movie-info .release-date {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Dropdown styling */
+.movie-info select {
+    margin: 10px 0;
+    padding: 5px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Container for buttons to align them side by side */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Update button styling */
+.update-btn {
+    flex: 2; /* Takes up more space */
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.update-btn:hover {
+    background-color: darkorange;
+}
+
+/* Delete button styling */
+.delete-btn {
+    flex: 1; /* Takes up less space */
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+
+
+/* Responsive design */
+@media (max-width: 800px) {
+    .movie-container {
+        width: 90%;
+    }
+}
+

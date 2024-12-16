@@ -53,7 +53,17 @@ public class MovieServlet extends HttpServlet {
             out.println("</script>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<header><h1>Book A Movie</h1></header>");
+            out.println("<header>");
+            out.println("<a href='javascript:history.back()'>");
+            out.println("<button id='back-button' >");
+            out.println("<svg xmlns='http://www.w3.org/2000/svg' height='30' viewBox='0 96 960 960' width='30' class='back-icon'>");
+            out.println("<path d='M560 816 320 576l240-240 42 42-198 198 198 198-42 42Z' />");
+            out.println("</svg>");
+            out.println("</button>");
+            out.println("</a>");
+            out.println("<h1>BOOK A MOVIE</h1>");
+            out.println("</header>");
+
             out.println("<div class='movies-container'>");
 
             boolean hasMovies = false;
@@ -76,7 +86,7 @@ public class MovieServlet extends HttpServlet {
                 
                 out.println("<form id='deleteForm-" + movieId + "' action='/MovieAdmin/viewmovies' method='POST' style='display:inline;'>");
                 out.println("<input type='hidden' name='id' value='" + movieId + "'>");
-                out.println("<button type='button' class='action-button' onclick='window.top.location.href=\"Seats.jsp?movieid=" + movieId + "&movieName=" + movieName + "&movieThumbnail=" + movieThumbnail + "&timeframe=" + timeframe + "\"'>Buy Ticket</button>");
+                out.println("<button type='button' class='action-button' onclick='window.location.href=\"Seats.jsp?movieid=" + movieId + "&movieName=" + movieName + "&movieThumbnail=" + movieThumbnail + "&timeframe=" + timeframe + "\"'>Buy Ticket</button>");
                 out.println("</form>");
                 out.println("</div>");
             }

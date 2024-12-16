@@ -47,7 +47,15 @@ public class MovieView extends HttpServlet {
             out.println("<link rel=\"stylesheet\" href=\"/MovieAdmin/ViewMoviesCss.css\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<header><h1>Available Movies</h1></header>");
+            out.println("<header>");
+            out.println("<a href='javascript:history.back()' class='back-button'>");
+            out.println("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='size-6'>");
+            out.println("<path fill-rule='evenodd' d='M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z' clip-rule='evenodd' />");
+            out.println("</svg>");
+            out.println("</a>");
+            out.println("<h1>Available Movies</h1>");
+            out.println("</header>");
+
             out.println("<div class='movies-container'>");
 
             boolean hasMovies = false;
@@ -60,41 +68,46 @@ public class MovieView extends HttpServlet {
                 String movieThumbnail = rs.getString("movieThumbnail");
                 String existingTimeframe = rs.getString("timeframe"); // Get the existing timeframe
 
-                out.println("<div class='movie-container'>");
-                out.println("<img src='" + movieThumbnail + "' alt='" + movieName + "' class='movie-thumbnail'>");
-                out.println("<h2>" + movieName + "</h2>");
-                out.println("<p><strong>Category:</strong> " + movieCategory + "</p>");
-                out.println("<p><strong>Release Date:</strong> " + releaseDate + "</p>");
+                out.println("<link rel='stylesheet' type='text/css' href='viewmovies.css'>");
 
-                // Dropdown for time frame selection
+                out.println("<div class='movie-container'>");
+                out.println("<div class='movie-poster'>");
+                out.println("<img src='" + movieThumbnail + "' alt='" + movieName + "'>");
+                out.println("</div>");
+                out.println("<div class='movie-info'>");
+                out.println("<h3>" + movieName + "</h3>");
+                out.println("<p class='category'>" + movieCategory + "</p>");
+                out.println("<p class='release-date'>" + releaseDate + "</p>");
+
+                // Update form
                 out.println("<form action='/MovieAdmin/viewmovies' method='POST'>");
                 out.println("<label for='timeframe-" + movieId + "'>Select Time Frame:</label>");
                 out.println("<select name='timeframe' id='timeframe-" + movieId + "' required>");
                 out.println("<option value='' disabled selected>Select Time Frame</option>");
-                
-               out.println("<option value='1.00 PM - 3.30 PM'" + 
-            (existingTimeframe != null && existingTimeframe.equals("1.00 PM - 3.30 PM") ? " selected" : "") + ">1.00 PM - 3.30 PM</option>");
-out.println("<option value='4.00 PM - 6.30 PM'" + 
-            (existingTimeframe != null && existingTimeframe.equals("4.00 PM - 6.30 PM") ? " selected" : "") + ">4.00 PM - 6.30 PM</option>");
-out.println("<option value='7.00 PM - 9.30 PM'" + 
-            (existingTimeframe != null && existingTimeframe.equals("7.00 PM - 9.30 PM") ? " selected" : "") + ">7.00 PM - 9.30 PM</option>");
-
-                
+                out.println("<option value='1.00 PM - 3.30 PM'" +
+                        (existingTimeframe != null && existingTimeframe.equals("1.00 PM - 3.30 PM") ? " selected" : "") + ">1.00 PM - 3.30 PM</option>");
+                out.println("<option value='4.00 PM - 6.30 PM'" +
+                        (existingTimeframe != null && existingTimeframe.equals("4.00 PM - 6.30 PM") ? " selected" : "") + ">4.00 PM - 6.30 PM</option>");
+                out.println("<option value='7.00 PM - 9.30 PM'" +
+                        (existingTimeframe != null && existingTimeframe.equals("7.00 PM - 9.30 PM") ? " selected" : "") + ">7.00 PM - 9.30 PM</option>");
                 out.println("</select>");
-                
                 out.println("<input type='hidden' name='movieid' value='" + movieId + "'>");
-          
-                out.println("<button type='submit' class='update-button'style='background-color: blue;  color: white;border: none; padding: 2px 3px; border-radius: 5px; cursor: pointer; font-size: 13px; transition: background-color 0.3s ease;' onmouseover='this.style.backgroundColor=\"darkblue\"' onmouseout='this.style.backgroundColor=\"blue\"'>Update</button>");
-                //out.println("<button type='submit' class='update-button' style='background-color: blue;  color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;' onmouseover='this.style.backgroundColor=\"darkblue\"' onmouseout='this.style.backgroundColor=\"blue\"'>Update</button>");
+
+                // Buttons side by side
+                out.println("<div class='button-container'>");
+                out.println("<button type='submit' class='update-btn'>Update</button>");
                 out.println("</form>");
-                 
-                // Delete button
-                out.println("<form id='deleteForm-" + movieId + "' action='/MovieAdmin/viewmovies' method='POST' style='display:inline;'>");
+
+                // Delete form
+                out.println("<form id='deleteForm-" + movieId + "' action='/MovieAdmin/viewmovies' method='POST' style='display: inline;'>");
                 out.println("<input type='hidden' name='id' value='" + movieId + "'>");
-                out.println("<button type='button' class='action-button' style='background-color: red; margin-top: 10px; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;' onclick='confirmDelete(" + movieId + ")'>Delete</button>");
+                out.println("<button type='button' class='delete-btn' onclick='confirmDelete(" + movieId + ")'>Delete</button>");
                 out.println("</form>");
+                out.println("</div>"); // Close button-container
 
                 out.println("</div>");
+                out.println("</div>");
+
             }
 
             if (!hasMovies) {
