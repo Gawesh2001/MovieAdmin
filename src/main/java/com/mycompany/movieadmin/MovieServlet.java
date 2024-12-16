@@ -76,7 +76,7 @@ public class MovieServlet extends HttpServlet {
                 
                 out.println("<form id='deleteForm-" + movieId + "' action='/MovieAdmin/viewmovies' method='POST' style='display:inline;'>");
                 out.println("<input type='hidden' name='id' value='" + movieId + "'>");
-                out.println("<button type='button' class='action-button' onclick='window.location.href=\"Seats.jsp?movieid=" + movieId + "&movieName=" + movieName + "&movieThumbnail=" + movieThumbnail + "&timeframe=" + timeframe + "\"'>Buy Ticket</button>");
+                out.println("<button type='button' class='action-button' onclick='window.top.location.href=\"Seats.jsp?movieid=" + movieId + "&movieName=" + movieName + "&movieThumbnail=" + movieThumbnail + "&timeframe=" + timeframe + "\"'>Buy Ticket</button>");
                 out.println("</form>");
                 out.println("</div>");
             }
