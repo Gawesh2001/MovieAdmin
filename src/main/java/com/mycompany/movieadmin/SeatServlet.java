@@ -74,7 +74,7 @@ public class SeatServlet extends HttpServlet {
             // Execute the batch insert
             int[] rowsInserted = statement.executeBatch();
             if (rowsInserted.length > 0) {
-                response.getWriter().write("<script>alert('Booking successful for " + rowsInserted.length + " seats! Ticket ID: " + newTicketId + "'); window.location.href='Seats.jsp';</script>");
+                response.getWriter().write("<script>alert('Booking successful for " + rowsInserted.length + " seats! Ticket ID: " + newTicketId + "'); window.location.href='index.html';</script>");
             } else {
                 response.getWriter().write("<script>alert('Booking failed. Please try again.'); window.history.back();</script>");
             }
