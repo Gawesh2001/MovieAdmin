@@ -82,9 +82,9 @@ body {
 
 /* Main Content Styling */
 .main-content {
-    margin-left: 250px; /* Space for the sidebar */
+    margin-left: 250px; 
     padding: 20px;
-    margin-top: 80px; /* Space for the fixed header */
+    margin-top: 80px; 
     width: calc(100% - 250px);
     max-width: 1200px;
     min-height: calc(100vh - 80px);

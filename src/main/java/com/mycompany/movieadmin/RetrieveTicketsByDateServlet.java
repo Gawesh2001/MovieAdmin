@@ -27,42 +27,42 @@ public class RetrieveTicketsByDateServlet extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         
         // JDBC Connection Variables
-        String url = "jdbc:mysql://localhost:3306/abccinema"; // Replace with your DB URL
-        String username = "root"; // Replace with your DB username
-        String password = "2001"; // Replace with your DB password
+        String url = "jdbc:mysql://localhost:3306/abccinema"; 
+        String username = "root"; 
+        String password = "2001"; 
         
-        // Get the selected date from request
+   
         String selectedDate = request.getParameter("selectedDate");
 
-        // SQL Query to retrieve data based on selected_date
+       
        String query = "SELECT selected_seats FROM ticketbookings WHERE selected_date = ?";
     
-    // Initialize JSON Array
+  
     JSONArray seatsArray = new JSONArray();
     
     try (PrintWriter out = response.getWriter();
          Connection conn = DriverManager.getConnection(url, username, password);
          PreparedStatement ps = conn.prepareStatement(query)) {
 
-        // Set the parameter for the prepared statement
+      
         ps.setString(1, selectedDate);
         
         ResultSet rs = ps.executeQuery();
 
-        // Extract data from result set
+        
         while (rs.next()) {
-            // Add each seat name to the JSON array
+            
             seatsArray.add(rs.getString("selected_seats"));
         }
 
-        // Check if any data was found
+        
         if (seatsArray.isEmpty()) {
             seatsArray.add("No data found for the selected date");
         }
 
-        // Output JSON Array
+       
         out.print(seatsArray.toString());
-        out.flush(); // Flush the output stream to send the data
+        out.flush(); 
 
     } catch (SQLException e) {
         e.printStackTrace();

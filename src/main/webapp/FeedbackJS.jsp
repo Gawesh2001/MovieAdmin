@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Admin Feedback Page</title>
-    <link rel="stylesheet" href="Feedback.css"> <!-- Ensure the path is correct -->
+    <link rel="stylesheet" href="Feedback.css"> 
 </head>
 <body>
     <header class="header">
@@ -15,7 +15,7 @@
     <h2>All User Feedback</h2>
 
     <%
-        // Retrieve the feedback list from the request scope
+        
         List<String[]> feedbackList = (List<String[]>) request.getAttribute("feedbackList");
 
         if (feedbackList == null || feedbackList.isEmpty()) {

@@ -7,18 +7,18 @@
     <link rel="stylesheet" href="CancelTicket.css">
 </head>
 <body>
-    <!-- Header Section -->
+   
     <header class="header">
         <h1>Cancel Ticket</h1>
     </header>
 
-    <!-- Main Content Section -->
+    
     <main>
         <div class="container">
             <h2>Cancel Tickets</h2>
             <div class="cancel-tickets-container">
 
-                <!-- Ticket Cancellation Form -->
+                
                 <form method="get" action="CancelTicketServlet">
                     <div class="form-group">
                         <label for="ticketId">Ticket ID:</label>
@@ -41,7 +41,7 @@
                     <button type="submit" class="cancel-btn">Cancel Ticket</button>
                 </form>
 
-                <!-- Success/Error Messages -->
+               
                 <div class="message">
                     <%
                         String message = (String) request.getAttribute("message");

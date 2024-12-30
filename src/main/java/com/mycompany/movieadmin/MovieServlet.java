@@ -32,10 +32,10 @@ public class MovieServlet extends HttpServlet {
              PreparedStatement pstmt = conn.prepareStatement(SELECT_QUERY);
              ResultSet rs = pstmt.executeQuery()) {
 
-            // Load JDBC driver
+           
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Start the response HTML
+          
             out.println("<!DOCTYPE html>");
             out.println("<html lang='en'>");
             out.println("<head>");
@@ -69,7 +69,7 @@ public class MovieServlet extends HttpServlet {
             boolean hasMovies = false;
             while (rs.next()) {
                 hasMovies = true;
-                int movieId = rs.getInt("movieid"); // Ensure this matches your database column name
+                int movieId = rs.getInt("movieid");
                 String movieName = rs.getString("movieName");
                 String movieCategory = rs.getString("movieCategory");
                 String releaseDate = rs.getString("releaseDate");
@@ -95,7 +95,7 @@ public class MovieServlet extends HttpServlet {
                 out.println("<p>No movies available at the moment.</p>");
             }
 
-            out.println("</div>"); // Close movies-container
+            out.println("</div>"); 
             out.println("</body>");
             out.println("</html>");
 

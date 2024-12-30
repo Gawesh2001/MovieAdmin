@@ -34,10 +34,10 @@ public class MovieView extends HttpServlet {
              PreparedStatement pstmt = conn.prepareStatement(SELECT_QUERY);
              ResultSet rs = pstmt.executeQuery()) {
 
-            // Load JDBC driver
+           
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Start the response HTML
+            
             out.println("<!DOCTYPE html>");
             out.println("<html lang='en'>");
             out.println("<head>");
@@ -93,12 +93,12 @@ public class MovieView extends HttpServlet {
                 out.println("</select>");
                 out.println("<input type='hidden' name='movieid' value='" + movieId + "'>");
 
-                // Buttons side by side
+                
                 out.println("<div class='button-container'>");
                 out.println("<button type='submit' class='update-btn'>Update</button>");
                 out.println("</form>");
 
-                // Delete form
+                
                 out.println("<form id='deleteForm-" + movieId + "' action='/MovieAdmin/viewmovies' method='POST' style='display: inline;'>");
                 out.println("<input type='hidden' name='id' value='" + movieId + "'>");
                 out.println("<button type='button' class='delete-btn' onclick='confirmDelete(" + movieId + ")'>Delete</button>");
@@ -114,7 +114,7 @@ public class MovieView extends HttpServlet {
                 out.println("<p>No movies available at the moment.</p>");
             }
 
-            out.println("</div>"); // Close movies-container
+            out.println("</div>"); 
             out.println("<script>");
             out.println("function confirmDelete(movieId) {");
             out.println("    if (confirm('Are you sure you want to delete this movie?')) {");
@@ -143,7 +143,7 @@ public class MovieView extends HttpServlet {
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             if (timeframe != null && movieIdStr != null) {
-                // Update movie time frame
+               
                 try (PreparedStatement pstmt = conn.prepareStatement(UPDATE_QUERY)) {
                     int movieId = Integer.parseInt(movieIdStr);
                     pstmt.setString(1, timeframe);
@@ -157,7 +157,7 @@ public class MovieView extends HttpServlet {
                     }
                 }
             } else {
-                // Handle movie deletion
+               
                 int movieId = Integer.parseInt(request.getParameter("id"));
                 try (PreparedStatement pstmt = conn.prepareStatement(DELETE_QUERY)) {
                     pstmt.setInt(1, movieId);

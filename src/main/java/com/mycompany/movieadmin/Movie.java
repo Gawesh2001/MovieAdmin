@@ -15,7 +15,7 @@ public class Movie {
     private String releaseDate;
     private String movieThumbnail;
 
-    // Getters and setters for movie properties
+ 
     public String getMovieName() {
         return movieName;
     }

@@ -11,12 +11,12 @@ flatpickr("#selectedDate", {
 document.getElementById("bookingForm").addEventListener("submit", function (event) {
     var selectedDate = document.getElementById("selectedDate").value;
 
-    // Validate if a valid date is selected
+    
     if (!selectedDate) {
         event.preventDefault();
         alert('Please select a valid date.');
     } else {
-        // Assign the selected date to the hidden input field (for submission)
+       
         document.getElementById("hiddenSelectedDate").value = selectedDate;
     }
 });
@@ -24,7 +24,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (even
 
 
 
-// Function to handle scroll effects
+
 function handleScrollEffects() {
     const scrollPosition = window.scrollY;
     const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -59,11 +59,11 @@ function handleScrollEffects() {
 
 
 
-// Listen for scroll event
+
 window.addEventListener('scroll', handleScrollEffects);
 
 
-//  handle scroll effect on seat buttons 
+
 document.addEventListener('scroll', function () {
    
     const seatLabels = document.querySelectorAll('label');
@@ -90,7 +90,7 @@ document.addEventListener('scroll', function () {
 
 
 
-let selectedDate = ""; // store selected date
+let selectedDate = ""; 
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -138,7 +138,7 @@ function fetchData() {
 
                 const seats = document.querySelectorAll('input[type="checkbox"]');
                 const totalPriceField = document.getElementById('totalPrice');
-                const seatPrice = 1500; // Example price per seat
+                const seatPrice = 1500; 
 
                 seats.forEach(seat => {
                     seat.addEventListener('change', () => {

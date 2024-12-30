@@ -6,14 +6,14 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="DashboardCss.css"/>
 </head>
-<!-- Header -->
+
 
 
 <body>
 
    
 
-    <!-- Sidebar -->
+   
     <div class="sidebar">
         <div class="logo">
            
@@ -30,10 +30,10 @@
         </ul>
     </div>
 
-    <!-- Main Content -->
+  
     <div class="main-content">
         
-        <!-- Manage Movies Section -->
+      
         <div id="manageMoviesSection" style="display: none;">
             <div class="dashboard-container">
                 <div class="dashboard-item" onclick="window.location.href='AddMovie.jsp';">

@@ -14,25 +14,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1000px; /* Slightly larger than thumbnail to give a border effect */
-    height: 300px; /* Slightly larger than thumbnail to give a border effect */
-   /* TV screen background color */
+    width: 1000px; 
+    height: 300px; 
+
     background: linear-gradient(135deg, #1f1c2c, #282828);
-    border-radius: 20px; /* Curvy edges for the TV screen */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Strong shadow for a TV effect */
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); 
     margin: 0px auto;
     padding: 20px;
-    overflow: no-content; /* Prevent the thumbnail from overflowing */
+    overflow: no-content; 
 }
 
 /* Movie Thumbnail */
 .movie-thumbnail {
     display: block;
-    width: 1000px; /* Fixed width */
-    height: 300px; /* Fixed height */
-    border-radius: 15px; /* Slight curve to fit within the TV */
-    object-fit: cover; /* Ensures the image scales to fill the container while maintaining aspect ratio */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Box shadow for the thumbnail */
+    width: 1000px; 
+    height: 300px; 
+    border-radius: 15px; 
+    object-fit: cover; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
 
 

@@ -21,14 +21,14 @@ header {
     color: white;
     padding: 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative; /* Ensure relative positioning for the button */
+    position: relative; 
 }
 
 .back-button {
-    position: absolute; /* This allows it to stay on the left */
-    left: 30px; /* Adjust distance from the left */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Fine-tune vertical centering */
+    position: absolute; 
+    left: 30px; 
+    top: 50%; 
+    transform: translateY(-50%); 
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -41,24 +41,24 @@ header {
 }
 
 .size-6 {
-    width: 30px; /* Adjust icon size */
+    width: 30px; 
     height: 30px;
     color: white;
 }
 
 h1 {
-    flex-grow: 1; /* This makes the h1 take up remaining space */
+    flex-grow: 1; 
     text-align: center;
     font-size: 4rem;
 }
 
 
 
-/* Ensure that the movies container is displayed as a grid with 4 columns */
+
 .movies-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-    gap: 20px; /* Gap between movie containers */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
     padding: 20px;
     box-sizing: border-box;
 }
@@ -98,16 +98,6 @@ p {
     background-color: #005f73;
 }
 
-/*.update-button {
-    background-color: #ff8800;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: background-color 0.3s ease;
-}*/
 
 
 /* Responsive design for medium screens */

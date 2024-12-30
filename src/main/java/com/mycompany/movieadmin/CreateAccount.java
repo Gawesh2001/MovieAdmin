@@ -23,38 +23,38 @@ public class CreateAccount extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/abccinema";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "2001"; // Change this to your DB password
+    private static final String DB_PASSWORD = "2001"; 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Get form data
+        
         String username = request.getParameter("username");
-        String password = request.getParameter("password");  // In production, hash this password
+        String password = request.getParameter("password");  
 
-        // Database connection
+       
         Connection conn = null;
         PreparedStatement pstmt = null;
 
         try {
-            // Load JDBC driver
+        
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establish database connection
+           
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            // SQL query to insert the user into the database
+    
             String query = "INSERT INTO admin (username, password) VALUES (?, ?)";
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, username);
-            pstmt.setString(2, password); // Use hashed password in production
+            pstmt.setString(2, password); 
 
-            // Execute the query
+           
             int rowsAffected = pstmt.executeUpdate();
 
-            // If the user was successfully created, redirect to login page
+            
             if (rowsAffected > 0) {
-                response.sendRedirect("LoginPage.jsp"); // Redirect to login page
+                response.sendRedirect("LoginPage.jsp"); 
             } else {
                 response.getWriter().println("<p>Error during registration. Please try again.</p>");
             }
@@ -63,7 +63,7 @@ public class CreateAccount extends HttpServlet {
             // Handle exceptions (e.g., SQLException, ClassNotFoundException)
             response.getWriter().println("<p>Error: " + e.getMessage() + "</p>");
         } finally {
-            // Close resources
+            
             try {
                 if (pstmt != null) pstmt.close();
                 if (conn != null) conn.close();

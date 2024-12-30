@@ -11,16 +11,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 body {
      background-image: url('https://i.pinimg.com/736x/b1/a4/51/b1a451f169b032edb717cdb9c1380aa0.jpg');
     
-    /* Make sure the background image covers the whole screen */
+    
     background-size: cover;
     
-    /* Ensure the background image is fixed and doesn't scroll with the page */
+    
     background-attachment: fixed;
     
-    /* Set the background position (centered) */
+   
     background-position: center;
     
-    /* Optionally, set a background color in case the image doesn't load */
+   
     background-color: #f0f0f0;
     
     margin: 0;

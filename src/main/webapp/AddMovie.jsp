@@ -10,17 +10,17 @@
 
 <body>
 
-    <!-- Header Section -->
+    
     <header class="header">
         <h1>Add New Movie - Admin Dashboard</h1>
     </header>
 
-    <!-- Main Content Section -->
+   
     <main>
         <div class="container">
             <h2>Add Movie Details</h2>
 
-            <!-- Movie Add Form -->
+           
             <form name="movieForm" action="addmovie" method="POST" class="form">
                 <div class="form-group">
                     <label for="movieId">Movie ID</label>
@@ -87,7 +87,7 @@
         </div>
     </main>
 
-    <!-- JavaScript -->
+    
     <script src="AddMovieJS.js"></script>
 
 </body>

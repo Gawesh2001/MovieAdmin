@@ -19,8 +19,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/forgotPasswordServlet")
 public class ForgetPassword extends HttpServlet {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/abccinema";
-    private static final String DB_USER = "root"; // Replace with your DB username
-    private static final String DB_PASSWORD = "2001"; // Replace with your DB password
+    private static final String DB_USER = "root"; 
+    private static final String DB_PASSWORD = "2001"; 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,18 +32,18 @@ public class ForgetPassword extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            // Connect to database
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            // Check if the email exists in the database
+           
             String checkEmailSql = "SELECT * FROM admin WHERE username = ?";
             PreparedStatement pstmt = conn.prepareStatement(checkEmailSql);
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                // Email exists, update the password
+              
                 String updatePasswordSql = "UPDATE admin SET password = ? WHERE username = ?";
                 PreparedStatement updatePstmt = conn.prepareStatement(updatePasswordSql);
                 updatePstmt.setString(1, newPassword);
@@ -51,10 +51,10 @@ public class ForgetPassword extends HttpServlet {
                 int rowsUpdated = updatePstmt.executeUpdate();
 
                 if (rowsUpdated > 0) {
-                    // Password updated successfully
+                    
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Password changed successfully!');");
-                    out.println("location='LoginPage.jsp';"); // Redirect to login page
+                    out.println("location='LoginPage.jsp';"); 
                     out.println("</script>");
                 } else {
                     out.println("<script type=\"text/javascript\">");
@@ -66,7 +66,7 @@ public class ForgetPassword extends HttpServlet {
                 // Email doesn't exist
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Entered email is incorrect!');");
-                out.println("location='ForgetPassword.jsp';"); // Stay on the forget password page
+                out.println("location='ForgetPassword.jsp';");
                 out.println("</script>");
             }
 
